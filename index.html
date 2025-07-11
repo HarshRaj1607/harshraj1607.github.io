@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal website of Harsh Raj, an undergraduate student passionate about technology and innovation.">
+    <meta name="keywords" content="Harsh Raj, undergraduate, projects, blog, technology, machine learning">
+    <meta property="og:title" content="Harsh Raj | Personal Website">
+    <meta property="og:description" content="Explore the portfolio and blog of Harsh Raj, an undergraduate student.">
+    <meta property="og:image" content="myimage.jpeg">
+    <title>Harsh Raj</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--bg-image, url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI4MDAiIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iODAwIiBmaWxsPSIjMGEwZTI3Ii8+CjxkZWZzPjxwYXR0ZXJuIGlkPSJjb2RlIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjUwIj4KPHRleHQgeD0iNSIgeT0iMTUiIGZpbGw9IiMwMGZmNDEiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTBweCIvLyBmdW5jdGlvbiBjb2RlKCkgezwvdGV4dD4KPHRleHQgeD0iNSIgeT0iMzAiIGZpbGw9IiMwMDg4ZmYiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTBweCIvLyAgICBjb25zb2xlLmxvZygnSGVsbG8nKTs8L3RleHQ+CjwvcGF0dGVybj48L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0idXJsKCNjb2RlKSIvPgo8L3N2Zz4='));
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px) opacity(0.08);
+            z-index: -1;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode::before {
+            filter: blur(8px) opacity(0.15);
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: #3498db;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle:hover {
+            background: #2980b9;
+            transform: scale(1.1);
+        }
+
+        /* Dark mode element styles */
+        body.dark-mode .name {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .tagline {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .contact-links a,
+        body.dark-mode .email-link {
+            color: #64b5f6;
+            border-color: #64b5f6;
+        }
+
+        body.dark-mode .contact-links a:hover,
+        body.dark-mode .email-link:hover {
+            background: #64b5f6;
+            color: #1a1a1a;
+        }
+
+        body.dark-mode .timeline-item {
+            background: #2a2a2a;
+            border-left-color: #64b5f6;
+        }
+
+        body.dark-mode .year-range {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .timeline-content {
+            color: #c0c0c0;
+        }
+
+        body.dark-mode .timeline-content a {
+            color: #64b5f6;
+        }
+
+        body.dark-mode .timeline-content a:hover {
+            color: #42a5f5;
+        }
+
+        body.dark-mode .section-title {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .skill-tag {
+            background: #2a2a2a;
+            color: #c0c0c0;
+            border-color: #444;
+        }
+
+        body.dark-mode .skill-tag:hover {
+            background: #64b5f6;
+            color: #1a1a1a;
+            border-color: #64b5f6;
+        }
+
+        body.dark-mode .coming-soon {
+            background: linear-gradient(135deg, #2a2a2a 0%, #333333 100%);
+            border-left-color: #64b5f6;
+        }
+
+        body.dark-mode .coming-soon h3 {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .coming-soon .meta {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .coming-soon p {
+            color: #c0c0c0;
+        }
+
+        body.dark-mode footer {
+            background: #2a2a2a;
+            color: #b0b0b0;
+            border-top-color: #444;
+        }
+
+        body.dark-mode .back-to-top {
+            color: #64b5f6;
+        }
+
+        body.dark-mode .back-to-top:hover {
+            color: #42a5f5;
+        }
+
+        body.dark-mode .tooltip {
+            background: #333;
+        }
+
+        body.dark-mode .tooltip::after {
+            border-color: transparent transparent #333 transparent;
+        }
+
+        .header {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e5e7eb;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .name-section {
+            text-align: left;
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .tagline {
+            font-size: 1.1em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-links a {
+            color: #3498db;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #3498db;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            display: inline-block;
+            text-align: center;
+            min-width: 60px;
+        }
+
+        .contact-links a:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .email-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .email-link {
+            color: #3498db;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #3498db;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            display: inline-block;
+            text-align: center;
+            min-width: 60px;
+        }
+
+        .email-link:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .tooltip {
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2c3e50;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent #2c3e50 transparent;
+        }
+
+        .email-container:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .copy-button {
+            background: #f59e0b;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 4px 8px;
+            margin-left: 8px;
+            font-size: 0.75rem;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background: #d97706;
+            transform: scale(1.1);
+        }
+
+        .fun-fact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0;
+            font-style: italic;
+            line-height: 1.7;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fun-fact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .timeline {
+            margin-top: 60px;
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .year-range {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .year-range::before {
+            content: '📅';
+            font-size: 1.2em;
+        }
+
+        .timeline-content {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .timeline-content a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .timeline-content a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 0.2em;
+            background-position: 0 88%;
+            padding: 2px 4px;
+            margin: 0 -4px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin: 60px 0 30px 0;
+            font-weight: 400;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #3498db 0%, #667eea 100%);
+            border-radius: 2px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: #f8f9fa;
+            color: #495057;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85em;
+            border: 2px solid #dee2e6;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .coming-soon {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            margin: 30px 0;
+            border-left: 4px solid #3498db;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(52, 152, 219, 0.05) 50%, transparent 70%);
+            animation: shine 4s infinite;
+        }
+
+        .coming-soon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .coming-soon h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: 500;
+        }
+
+        .coming-soon .meta {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .coming-soon p {
+            color: #555;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .copy-success {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .copy-success.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 30px 0;
+            border-top: 1px solid #eee;
+            color: #666;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .back-to-top {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-top: 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .name-section {
+                text-align: center;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .skills {
+                justify-content: center;
+            }
+
+            .timeline-item {
+                padding: 20px;
+            }
+
+            .coming-soon {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Subtle animations */
+        .profile-img {
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-links a, .email-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-links a::before, .email-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-links a:hover::before, .email-link:hover::before {
+            left: 100%;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+    
+    <header class="header">
+        <div class="profile-section">
+            <img src="myimage.jpeg" alt="Harsh Raj's Profile Picture" class="profile-img" loading="lazy">
+            <div class="name-section">
+                <h1 class="name">Harsh Raj</h1>
+                <p class="tagline">Undergrad Student(Dharma), Explorer(Swabhav)</p>
+            </div>
+        </div>
+        <div class="contact-links">
+            <div class="email-container">
+                <a href="#" class="email-link">Email</a>
+                <span class="tooltip">harshraj1607@gmail.com <button class="copy-button" id="copyEmail">Copy</button></span>
+            </div>
+            <a href="https://github.com/HarshRaj1607" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/harshraj1607/" target="_blank">LinkedIn</a>
+            <a href="https://x.com/1607_harsh" target="_blank">Twitter</a>
+            <a href="/resume.pdf" target="_blank">Resume</a>
+        </div>
+    </header>
+
+    <div id="copySuccess" class="copy-success">✨ Email copied to clipboard!</div>
+
+    <div class="fun-fact">
+        Just curious <br><br> This box is too less to contain my entire self!
+    </div>
+
+    <main class="timeline">
+        <div class="timeline-item">
+            <div class="year-range">2024 - Present</div>
+            <div class="timeline-content">
+                Currently pursuing my undergraduate degree in CSE while exploring the field of AI. Have learnt to build LLMs, neural networks and other stuff from scratch.
+                <br><br>Did a lot of debating, explored lots of interesting ideas across disciplines
+                <br><br> Started writing about how I think, and documenting the work I have done throughout the year
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="year-range">Current Focus</div>
+            <div class="timeline-content">
+                Interested in LLMs and reasoning, reinforcement learning and other interesting things in AI
+                <br><br>Also just as curious about biology, neuroscience, cognition, finance, philosophy and much more!
+                <br><br>Working towards contributing in AI and other fields through novelty and research!
+            </div>
+        </div>
+    </main>
+
+    <h2 class="section-title">Technical Interests</h2>
+    <div class="skills">
+        <span class="skill-tag">Machine Learning</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Optimization</span>
+        <span class="skill-tag">Neural Networks</span>
+        <span class="skill-tag">LLMs</span>
+        <span class="skill-tag">Reinforcement Learning</span>
+        <span class="skill-tag">Deep Learning</span>
+        <span class="skill-tag">Research</span>
+    </div>
+
+    <h2 class="section-title">Projects</h2>
+    <div class="coming-soon">
+        <h3>🚧 Under Development</h3>
+        <div class="meta">Exciting projects coming soon!</div>
+        <p>I'm currently working on some fascinating projects that explore the boundaries of machine learning and AI. 
+        From neural network architectures to optimization algorithms, there's lots of exciting work in progress. 
+        Check back soon for updates on my latest creations!</p>
+    </div>
+
+    <h2 class="section-title">Writing & Essays</h2>
+    <div class="coming-soon">
+        <h3>📝 Thoughts in Progress</h3>
+        <div class="meta">Essays and reflections on technology, learning, and life</div>
+        <p>I'll be sharing my essays, thoughts, and insights here soon. From technical deep-dives to personal reflections 
+        on the nature of curiosity and learning, there's lots of exciting content coming your way. 
+        My writing explores the questions that keep me up at night and the discoveries that make it all worthwhile.</p>
+    </div>
+
+    <footer>
+        <p>© <span id="year"></span> Harsh Raj. Built with curiosity and ☕</p>
+        <a href="#" class="back-to-top">↑ Back to Top</a>
+    </footer>
+
+    <script>
+        // Dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Load background image
+        async function loadBackgroundImage() {
+            try {
+                const imageData = await window.fs.readFile('paste.txt');
+                // Since the image is in the document, we'll use a coding-themed pattern
+                // If you have the actual image file, replace this with the correct filename
+                const backgroundImage = url('data:image/jpeg;base64,${btoa(String.fromCharCode(...imageData))}');
+                document.documentElement.style.setProperty('--bg-image', backgroundImage);
+            } catch (error) {
+                console.log('Background image not found, using default pattern');
+            }
+        }
+        
+        loadBackgroundImage();
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Email copy functionality
+        document.getElementById('copyEmail').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const email = 'harshraj1607@gmail.com';
+            
+            navigator.clipboard.writeText(email).then(function() {
+                const successMessage = document.getElementById('copySuccess');
+                successMessage.classList.add('show');
+                
+                setTimeout(function() {
+                    successMessage.classList.remove('show');
+                }, 3000);
+            });
+        });
+
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
